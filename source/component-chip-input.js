@@ -175,11 +175,6 @@ class ChipInput extends LitElement {
     handleInput(event) {
         let input_type = event.inputType;
         let key = event.data;
-        if(key == ' ') {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            return this.createChip();
-        }
 
         if(this.autocomplete_debounce_key)
             clearTimeout(this.autocomplete_debounce_key);
