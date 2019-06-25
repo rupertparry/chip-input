@@ -22,6 +22,9 @@ class ChipInput extends LitElement {
             },
             search_icon: {
                 type: Boolean
+            },
+            space_delimiter: {
+                type: Boolean
             }
         }
     }
@@ -91,6 +94,7 @@ class ChipInput extends LitElement {
         this.chips = [];
         this.change_handler_enabled = true;
         this.autocomplete_debounce = 200;
+        this.space_delimiter = false;
     }
 
     render() {
@@ -175,6 +179,12 @@ class ChipInput extends LitElement {
     handleInput(event) {
         let input_type = event.inputType;
         let key = event.data;
+
+        if(key == ' ' && this.space_delimiter) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            return this.createChip();
+        }
 
         if(this.autocomplete_debounce_key)
             clearTimeout(this.autocomplete_debounce_key);
