@@ -166,10 +166,10 @@ class ChipInput extends LitElement {
             event.preventDefault();
             event.stopImmediatePropagation();
             
-            if(this.highlighted_autocomplete_index !== null) {
-                let div = this.autocomplete_list.childNodes[this.highlighted_autocomplete_index];
-                return this.handleAutoCompleteItemSelected(div);
-            }
+            // if(this.highlighted_autocomplete_index !== null) {
+            //     let div = this.autocomplete_list.childNodes[this.highlighted_autocomplete_index];
+            //     return this.handleAutoCompleteItemSelected(div);
+            // }
 
             return this.createChip();
         }
