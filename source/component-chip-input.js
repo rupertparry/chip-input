@@ -275,6 +275,16 @@ class ChipInput extends LitElement {
         this.change_handler_enabled = false;
         this.real_input.value = '';
         this.change_handler_enabled = true;
+        this.emitChangeEvent();
+    }
+
+    emitChangeEvent() {
+        let event = new CustomEvent('chips-changed', {
+            detail: {
+                chips: this.chips
+            }
+        });
+        this.dispatchEvent(event);
     }
 
     async showAutoComplete(event) {
